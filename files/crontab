@@ -1,0 +1,1 @@
+*/30 * * * * root /usr/bin/update_repo.sh >> /var/log/cron.log 2>&1
