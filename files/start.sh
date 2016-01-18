@@ -5,4 +5,4 @@ cd /var/wiki
 
 /usr/bin/start-cron.sh
 
-gollum . --port 80 --live-preview
+gollum . --port 80 --adapter rugged

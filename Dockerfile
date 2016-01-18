@@ -9,7 +9,7 @@ MAINTAINER Roberto Soares <roberto.tech@gmail.com>
 
 # Dependencies
 RUN apt-get -y update
-RUN apt-get -y install build-essential libicu-dev cron git
+RUN apt-get -y install build-essential libicu-dev cron git zlib1g-dev ruby-dev libgit2-dev cmake
 
 # SSH Keys
 RUN /bin/mkdir -p /root/.ssh
@@ -23,13 +23,13 @@ RUN /bin/chmod 0400 /root/.ssh/id_rsa
 RUN /bin/chmod 0400 /root/.ssh/config
 
 # Gems
-RUN gem install gollum
-RUN gem install github-markdown
+RUN gem install gollum github-markdown gollum-rugged_adapter
 
 # Sync
 ADD files/update_repo.sh /usr/bin/update_repo.sh
 ADD files/start-cron.sh /usr/bin/start-cron.sh
 ADD files/crontab /etc/crontab
+ADD files/gitconfig /root/.gitconfig
 
 RUN chmod +x /usr/bin/update_repo.sh
 RUN chmod +x /usr/bin/start-cron.sh
